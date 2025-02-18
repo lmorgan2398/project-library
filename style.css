@@ -5,3 +5,30 @@ body,
     margin: 0;
     box-sizing: border-box;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.bookshelf {
+    width: 1000px;
+    height: 500px;
+    background-color: rgb(102, 72, 45);
+    border: 5px solid rgb(177, 122, 75);
+    display: flex;
+    flex-direction: column;
+}
+
+.shelf {
+    background-color: rgb(102, 72, 45);
+    border: 5px solid rgb(177, 122, 75);
+    flex: auto;
+    display: flex;
+}
+
+.book {
+    flex: auto;
+}
