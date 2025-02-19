@@ -15,7 +15,7 @@ function addBookToLibrary(title, author, pages, status, color) {
 }
 
 function displayLibrary() {
-    for (let i = 0; i < myLibrary.length; i++); {
+    for (let i = 0; i < myLibrary.length; i++) {
     (function (currentIndex) {
         let currentBookObj = myLibrary[currentIndex];
         let currentBookEle = document.querySelector(`.book${currentIndex}`);
@@ -25,7 +25,7 @@ function displayLibrary() {
                 // will change currentBookObj to the value of the inputs
                 // then update display to match input values
             })
-            // set class on the element to highlight and add a plus sign when hovered
+            currentBookEle.classList.add(`empty`);
         } else {
             currentBookEle.addEventListener('click', {
                 // code to be inserted representing a current book obj dialog
@@ -38,5 +38,5 @@ function displayLibrary() {
     }
 };
 
-    
 
+displayLibrary();
