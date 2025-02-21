@@ -26,12 +26,15 @@ body {
 .shelf {
     background-color: rgb(102, 72, 45);
     border: 5px solid rgb(177, 122, 75);
-    flex: auto;
+    flex: 1;
     display: flex;
 }
 
 .book {
-    flex: auto;
+    flex: 1;
+    box-sizing: border-box;
+    width: 81.67px;
+    height: 236.67px;
 }
 
 .empty:hover {
@@ -49,4 +52,20 @@ dialog {
     height: 450px;
     width: 350px;
     justify-self: center;
+}
+
+.book p {
+    font-size: 24px;
+    height: 81.67px;
+    width: 206.67px;
+    transform: rotate(270deg);
+    transform-origin: 25;
+    position: relative;
+    bottom: -77px;
+    right: -30px;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    overflow:hidden;
+    text-wrap: nowrap;
 }

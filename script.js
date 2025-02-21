@@ -21,6 +21,7 @@ addBookToLibrary('The Lord of the Rings: The Return of the King', 'J.R.R. Tolkie
 console.log(myLibrary);
 
 
+let currentBookIndex;
 
 function displayLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -41,6 +42,10 @@ function displayLibrary() {
                 // will give options to delete the object and update display
             })
             // set class to display book color and title and grow book when hovered
+            currentBookEle.style.backgroundColor = currentBookObj.color;
+            let titlePara = document.createElement('p');
+            currentBookEle.appendChild(titlePara);
+            titlePara.textContent = currentBookObj.title.toUpperCase();
         }
     })(i);
     }
