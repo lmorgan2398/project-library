@@ -21,7 +21,14 @@ addBookToLibrary('The Lord of the Rings: The Return of the King', 'J.R.R. Tolkie
 console.log(myLibrary);
 
 
+let addBookDialog = document.querySelector('.add-book');
+
+document.addEventListener('DOMContentLoaded', () => {
+    addBookDialog.close();
+})
+
 let currentBookIndex;
+
 
 function displayLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -29,14 +36,16 @@ function displayLibrary() {
         let currentBookObj = myLibrary[currentIndex];
         let currentBookEle = document.querySelector(`[data-index-number="${currentIndex}"]`);
         if(currentBookObj === null) {
-            currentBookEle.addEventListener('click', {
+            currentBookEle.addEventListener('click', () => {
                 // code to be inserted representing the 'add new book' dialog
+                addBookDialog.showModal();
                 // will change currentBookObj to the value of the inputs
+                console.log(currentIndex);
                 // then update display to match input values
             })
             currentBookEle.classList.add(`empty`);
         } else {
-            currentBookEle.addEventListener('click', {
+            currentBookEle.addEventListener('click', () => {
                 // code to be inserted representing a current book obj dialog
                 // will display information from library array objects
                 // will give options to delete the object and update display
