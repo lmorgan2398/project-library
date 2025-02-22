@@ -22,6 +22,7 @@ console.log(myLibrary);
 
 
 let addBookDialog = document.querySelector('.add-book');
+let displayBookDialog = document.querySelector('.book-information');
 
 document.addEventListener('DOMContentLoaded', () => {
     addBookDialog.close();
@@ -47,6 +48,15 @@ function displayLibrary() {
         } else {
             currentBookEle.addEventListener('click', () => {
                 // code to be inserted representing a current book obj dialog
+                displayBookDialog.showModal();
+                let bookTitle = document.querySelector('.book-title');
+                let bookAuthor = document.querySelector('.book-author');
+                let bookPages = document.querySelector('.book-pages');
+                bookTitle.textContent = currentBookObj.title;
+                bookAuthor.textContent = currentBookObj.author;
+                bookPages.textContent = currentBookObj.pages + ' ' + 'pages';
+                let displayBookDialogContainer = document.querySelector('.book-information-container');
+                displayBookDialogContainer.style.backgroundColor = currentBookObj.color;
                 // will display information from library array objects
                 // will give options to delete the object and update display
             })
