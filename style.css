@@ -47,8 +47,8 @@ body {
 }
 
 dialog {
-    background-color: rgb(228, 212, 198);
-    border: 4px solid rgba(90, 61, 36, 0.486);
+    background-color: red;
+    border: 4px solid black;
     height: 450px;
     width: 350px;
     justify-self: center;

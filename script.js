@@ -40,6 +40,11 @@ function displayLibrary() {
             currentBookEle.addEventListener('click', () => {
                 // code to be inserted representing the 'add new book' dialog
                 addBookDialog.showModal();
+                let colorInput = document.querySelector('#color');
+                let addBookDialogContainer = document.querySelector('.add-book form');
+                colorInput.addEventListener('input', () => {
+                    addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
+                })
                 // will change currentBookObj to the value of the inputs
                 console.log(currentIndex);
                 // then update display to match input values
