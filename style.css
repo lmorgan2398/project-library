@@ -37,6 +37,11 @@ body {
     height: 236.67px;
 }
 
+.book:hover {
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.15);
+    cursor: grab;
+}
+
 .empty:hover {
     background-image: url(./images/plus-lg.svg);
     background-repeat: no-repeat;
