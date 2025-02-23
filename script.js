@@ -45,9 +45,7 @@ function displayLibrary() {
                 colorInput.addEventListener('input', () => {
                     addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
                 })
-                // will change currentBookObj to the value of the inputs
                 console.log(currentIndex);
-                // then update display to match input values
             })
             currentBookEle.classList.add(`empty`);
         } else {

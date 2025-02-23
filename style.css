@@ -173,3 +173,20 @@ input:focus {
     width: fit-content;
     background-color: whitesmoke;
 }
+
+.save-button {
+    width: 45px;
+    height: 45px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: all 0.1s ease-in-out;
+}
+
+.save-button:hover {
+    background-color: whitesmoke;
+    cursor: grab;
+    transform: scale(1.02);
+}
