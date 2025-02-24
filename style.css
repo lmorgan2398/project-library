@@ -192,3 +192,14 @@ input:focus {
     cursor: grab;
     transform: scale(1.02);
 }
+
+.read-status {
+    text-align: center;
+    padding: 4px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.read-status:hover {
+    cursor: grab;
+}
