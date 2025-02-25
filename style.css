@@ -241,3 +241,28 @@ input:focus {
     cursor: grab;
     transform: scale(1.02);
 }
+
+.edit-button {
+    width: 45px;
+    height: 45px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: all 0.1s ease-in-out;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.edit-button img {
+    width: 30px;
+    height: 40px;
+}
+
+.edit-button:hover {
+    background-color: whitesmoke;
+    cursor: grab;
+    transform: scale(1.02);
+}
