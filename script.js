@@ -88,6 +88,8 @@ function displayLibrary2() {
                 let bookAuthor = document.querySelector('.book-author');
                 let bookPages = document.querySelector('.book-pages');
                 let bookStatus = document.querySelector('.read-status');
+                bookStatus.replaceWith(bookStatus.cloneNode(true));
+                bookStatus = document.querySelector('.read-status');
                 bookStatus.textContent = currentBookObj.status.toUpperCase();
                 if(currentBookObj.status === 'read') {
                     bookStatus.style.backgroundColor = 'green';
@@ -95,6 +97,7 @@ function displayLibrary2() {
                     bookStatus.style.backgroundColor = 'red';
                 }
                 bookStatus.addEventListener('click', () => {
+                    console.log('working');
                     currentBookObj.readStatus();
                 })
                 bookTitle.textContent = currentBookObj.title;
@@ -102,6 +105,19 @@ function displayLibrary2() {
                 bookPages.textContent = currentBookObj.pages + ' ' + 'pages';
                 let displayBookDialogContainer = document.querySelector('.book-information-container');
                 displayBookDialogContainer.style.backgroundColor = currentBookObj.color;
+                let deleteButton = document.querySelector('.delete-button');
+                deleteButton.replaceWith(deleteButton.cloneNode(true));
+                deleteButton = document.querySelector('.delete-button');
+                deleteButton.addEventListener('click', () => {
+                    myLibrary[currentIndex] = null;
+                    currentBookEle.classList.add('empty');
+                    currentBookEle.style.backgroundColor = '#66482d';
+                    while(currentBookEle.firstChild) {
+                        currentBookEle.removeChild(currentBookEle.firstChild);
+                    }                    
+                    displayBookDialog.close();
+                    displayLibrary2();
+                })
                 }
             })
         })(i);

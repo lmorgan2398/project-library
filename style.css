@@ -220,3 +220,24 @@ input:focus {
     transform: scale(1.05);
     cursor: grab;
 }
+
+
+.delete-button {
+    width: 45px;
+    height: 45px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: all 0.1s ease-in-out;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.delete-button:hover {
+    background-color: whitesmoke;
+    cursor: grab;
+    transform: scale(1.02);
+}
