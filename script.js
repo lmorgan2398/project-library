@@ -129,5 +129,32 @@ closeButtons.forEach(button => {
     button.addEventListener('click', () => {
         let dialog = button.closest('dialog');
         dialog.close();
+        if(dialog.classList.contains('add-book')) {
+            console.log('escaped');
+            let titleInput = document.querySelector('#title');
+            titleInput.value = null;
+            let authorInput = document.querySelector('#author');
+            authorInput.value = null;
+            let pagesInput = document.querySelector('#pages');
+            pagesInput.value = null;
+            let colorInput = document.querySelector('#color');
+            colorInput.value = null;
+            addBookDialog.close();
+        }
     })
+})
+
+addBookDialog.addEventListener('keydown', function(event) {
+    if(event.key === 'Escape' || event.key === 'Esc') {
+        console.log('escaped');
+        let titleInput = document.querySelector('#title');
+        titleInput.value = null;
+        let authorInput = document.querySelector('#author');
+        authorInput.value = null;
+        let pagesInput = document.querySelector('#pages');
+        pagesInput.value = null;
+        let colorInput = document.querySelector('#color');
+        colorInput.value = null;
+        addBookDialog.close();
+    }
 })
