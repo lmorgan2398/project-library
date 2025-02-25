@@ -65,7 +65,6 @@ function displayLibrary2() {
             currentBookEle.addEventListener('click', () => {
                 if(currentBookObj === null) {
                 addBookDialog.showModal();
-                console.log(myLibrary[currentIndex]);
                 let colorInput = document.querySelector('#color');
                 let addBookDialogContainer = document.querySelector('.add-book form');
                 colorInput.addEventListener('input', () => {
@@ -108,3 +107,11 @@ function displayLibrary2() {
         })(i);
     }
 }
+
+let closeButtons = document.querySelectorAll('dialog .close-button');
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        let dialog = button.closest('dialog');
+        dialog.close();
+    })
+})
