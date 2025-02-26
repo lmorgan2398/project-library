@@ -65,11 +65,15 @@ function displayLibrary2() {
             currentBookEle.addEventListener('click', () => {
                 if(currentBookObj === null) {
                 addBookDialog.showModal();
+
+
                 let colorInput = document.querySelector('#color');
                 let addBookDialogContainer = document.querySelector('.add-book form');
                 colorInput.addEventListener('input', () => {
                     addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
                 })
+
+
                 let saveButton = document.querySelector('.save-button');
                 saveButton.replaceWith(saveButton.cloneNode(true));
                 saveButton = document.querySelector('.save-button');
@@ -80,14 +84,24 @@ function displayLibrary2() {
                     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, 'unread', colorInput.value.toLowerCase(), currentIndex);
                     addBookDialog.close();
                     currentBookEle.classList.remove('empty');
+                    titleInput.value = null;
+                    authorInput.value = null;
+                    pagesInput.value = null;
+                    colorInput.value = 'red';
+                    let addBookDialogContainer = document.querySelector('.add-book form');
+                    addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
                     displayLibrary2();
                 })
+
+
                 } else {
                     displayBookDialog.showModal();
                 let bookTitle = document.querySelector('.book-title');
                 let bookAuthor = document.querySelector('.book-author');
                 let bookPages = document.querySelector('.book-pages');
                 let bookStatus = document.querySelector('.read-status');
+
+
                 bookStatus.replaceWith(bookStatus.cloneNode(true));
                 bookStatus = document.querySelector('.read-status');
                 bookStatus.textContent = currentBookObj.status.toUpperCase();
@@ -100,11 +114,15 @@ function displayLibrary2() {
                     console.log('working');
                     currentBookObj.readStatus();
                 })
+
+
                 bookTitle.textContent = currentBookObj.title;
                 bookAuthor.textContent = currentBookObj.author;
                 bookPages.textContent = currentBookObj.pages + ' ' + 'pages';
                 let displayBookDialogContainer = document.querySelector('.book-information-container');
                 displayBookDialogContainer.style.backgroundColor = currentBookObj.color;
+
+
                 let deleteButton = document.querySelector('.delete-button');
                 deleteButton.replaceWith(deleteButton.cloneNode(true));
                 deleteButton = document.querySelector('.delete-button');
@@ -118,6 +136,53 @@ function displayLibrary2() {
                     displayBookDialog.close();
                     displayLibrary2();
                 })
+
+                let editButton = document.querySelector('.edit-button');
+                editButton.replaceWith(editButton.cloneNode(true));
+                editButton = document.querySelector('.edit-button');
+                editButton.addEventListener('click', () => {
+                    displayBookDialog.close();
+                    addBookDialog.showModal();
+
+                    let titleInput = document.querySelector('#title');
+                    titleInput.value = currentBookObj.title;
+                    let authorInput = document.querySelector('#author');
+                    authorInput.value = currentBookObj.author;
+                    let pagesInput = document.querySelector('#pages');
+                    pagesInput.value = currentBookObj.pages;
+                    let savedReadStatus = currentBookObj.status;
+                    let colorInput = document.querySelector('#color'); 
+                    colorInput.value = currentBookObj.color;
+
+
+                    let addBookDialogContainer = document.querySelector('.add-book form');
+                    addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
+
+                    colorInput.addEventListener('input', () => {
+                        addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
+                    })
+
+
+                    let saveButton = document.querySelector('.save-button');
+                    saveButton.replaceWith(saveButton.cloneNode(true));
+                    saveButton = document.querySelector('.save-button');
+                    saveButton.addEventListener('click', () => {
+                    let titleInput = document.querySelector('#title');
+                    let authorInput = document.querySelector('#author');
+                    let pagesInput = document.querySelector('#pages');
+                    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, savedReadStatus, colorInput.value.toLowerCase(), currentIndex);
+                    addBookDialog.close();
+                    currentBookEle.classList.remove('empty');
+                    titleInput.value = null;
+                    authorInput.value = null;
+                    pagesInput.value = null;
+                    colorInput.value = 'red';
+                    let addBookDialogContainer = document.querySelector('.add-book form');
+                    addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
+                    displayLibrary2();
+                })
+                })
+
                 }
             })
         })(i);
@@ -138,7 +203,9 @@ closeButtons.forEach(button => {
             let pagesInput = document.querySelector('#pages');
             pagesInput.value = null;
             let colorInput = document.querySelector('#color');
-            colorInput.value = null;
+            colorInput.value = 'red';
+            let addBookDialogContainer = document.querySelector('.add-book form');
+            addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
             addBookDialog.close();
         }
     })
@@ -154,7 +221,9 @@ addBookDialog.addEventListener('keydown', function(event) {
         let pagesInput = document.querySelector('#pages');
         pagesInput.value = null;
         let colorInput = document.querySelector('#color');
-        colorInput.value = null;
+        colorInput.value = 'red';
+        let addBookDialogContainer = document.querySelector('.add-book form');
+        addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
         addBookDialog.close();
     }
 })
