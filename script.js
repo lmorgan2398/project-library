@@ -81,6 +81,10 @@ function displayLibrary2() {
                     let titleInput = document.querySelector('#title');
                     let authorInput = document.querySelector('#author');
                     let pagesInput = document.querySelector('#pages');
+                    if(titleInput.value === '' || authorInput.value === '' || pagesInput.value === '') {
+                        alert('Please complete book information before submitting!');
+                        return;
+                    }
                     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, 'unread', colorInput.value.toLowerCase(), currentIndex);
                     addBookDialog.close();
                     currentBookEle.classList.remove('empty');

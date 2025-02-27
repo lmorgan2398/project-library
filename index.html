@@ -53,10 +53,10 @@
     </div>
     <dialog class="add-book">
         <form>
-                <input type="text" name="title" id="title" placeholder="Title">
-                <input type="text" name="author" id="author" placeholder="Author">
+                <input type="text" name="title" id="title" placeholder="Title" maxlength="75">
+                <input type="text" name="author" id="author" placeholder="Author" maxlength="50">
                 <div class="pages">
-                    <input type="number" name="pages" id="pages" placeholder="--"><p>pages</p>
+                    <input type="number" name="pages" id="pages" placeholder="--" max="10000"><p>pages</p>
                 </div>
                 <label for="color">Color:
                     <select id="color" name="color" value="red">
