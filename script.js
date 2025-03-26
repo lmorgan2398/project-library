@@ -1,25 +1,30 @@
 let myLibrary = new Array(36).fill(null);
 
-function Book(title, author, pages, status, color) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.color = color;
+class Book {
+
+    constructor(title, author, pages, status, color){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.color = color;
+    }
+
+    readStatus() {
+        let readStatusButton = document.querySelector('.read-status')
+        if (this.status === 'read') {
+            this.status = 'unread'
+            readStatusButton.style.backgroundColor = 'red';
+            readStatusButton.textContent = 'UNREAD';
+        } else {
+            this.status = 'read';
+            readStatusButton.style.backgroundColor = 'green';
+            readStatusButton.textContent = 'READ';
+        }
+    }
+    
 };
 
-Book.prototype.readStatus = function() {
-    let readStatusButton = document.querySelector('.read-status')
-    if (this.status === 'read') {
-        this.status = 'unread'
-        readStatusButton.style.backgroundColor = 'red';
-        readStatusButton.textContent = 'UNREAD';
-    } else {
-        this.status = 'read';
-        readStatusButton.style.backgroundColor = 'green';
-        readStatusButton.textContent = 'READ';
-    }
-}
 
 function addBookToLibrary(title, author, pages, status, color, index) {
     let newBook = new Book(title, author, pages, status, color);
