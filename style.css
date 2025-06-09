@@ -62,6 +62,7 @@ dialog {
 }
 
 .add-book form {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -268,4 +269,30 @@ input:focus {
     background-color: whitesmoke;
     cursor: grab;
     transform: scale(1.02);
+}
+
+.errored {
+    background-color: rgb(255, 173, 152);
+    color: red;
+}
+
+.error {
+    visibility: hidden;
+    position: absolute;
+}
+
+.error.active {
+    visibility: visible;
+}
+
+.title-error {
+    top: 125px;
+}
+
+.author-error {
+    top: 190px;
+}
+
+.pages-error {
+    top: 320px;
 }

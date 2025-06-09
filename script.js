@@ -78,15 +78,90 @@ function displayLibrary2() {
                     addBookDialogContainer.style.backgroundColor = colorInput.value.toLowerCase();
                 })
 
-
+                let titleInput = document.querySelector('#title');
+                    let titleError = document.querySelector('.title-error');
+                    titleInput.addEventListener('input', () => {
+                        console.log(titleInput.validity.valid);
+                        if (titleInput.validity.valid) {
+                            if(titleInput.classList.contains('errored')){
+                                titleInput.classList.remove('errored');
+                            }
+                            titleError.textContent = '';
+                            if(titleError.classList.contains('active')){
+                                titleError.classList.remove('active');
+                            }
+                        } else {
+                            showError();
+                        }
+                    });
+                    let authorInput = document.querySelector('#author');
+                    let authorError = document.querySelector('.author-error');
+                    authorInput.addEventListener('input', () => {
+                        if(authorInput.validity.valid) {
+                            if(authorInput.classList.contains('errored')){
+                                authorInput.classList.remove('errored');
+                            }
+                            authorError.textContent = '';
+                            if(authorError.classList.contains('active')){
+                                authorError.classList.remove('active');
+                            }
+                        } else {
+                            showError();
+                        }
+                    });
+                    let pagesInput = document.querySelector('#pages');
+                    let pagesError = document.querySelector('.pages-error');
+                    pagesInput.addEventListener('input', () => {
+                        if(pagesInput.validity.valid) {
+                            if(pagesInput.classList.contains('errored')){
+                                pagesInput.classList.remove('errored');
+                            }
+                            pagesError.textContent = '';
+                            if(pagesError.classList.contains('active')){
+                                pagesError.classList.remove('active');
+                            }
+                        } else {
+                            pagesInput.classList.add('errored');
+                            showError();
+                        }
+                    })
+                    function showError() {
+                        console.log('showing');
+                        if (titleInput.validity.valueMissing) {
+                            titleError.textContent = 'Please enter a title.';
+                        } else if (titleInput.validity.tooLong) {
+                            titleError.textContent = 'Title too long (max 75 characters).';
+                        } 
+                        if (authorInput.validity.valueMissing) {
+                            authorError.textContent = 'Please enter an author.';
+                        } else if (authorInput.validity.tooLong) {
+                            authorError.textContent = 'Author name too long (max 50 characters).';
+                        } 
+                        if (pagesInput.validity.valueMissing) {
+                            pagesError.textContent = 'Please enter a page count.';
+                        } else if (pagesInput.validity.tooLong) {
+                            pagesError.textContent = 'Page count too high (max 10,000).';
+                        } else if (pagesInput.validity.tooShort) {
+                            pagesError.textContent = 'Page count too low (must be above ).';
+                        }
+                        if (!titleInput.validity.valid) {
+                            titleInput.classList.add('errored');
+                            titleError.classList.add('active');
+                        }
+                        if (!authorInput.validity.valid) {
+                            authorInput.classList.add('errored');
+                            authorError.classList.add('active');
+                        }
+                        if (!pagesInput.validity.valid) {
+                            pagesInput.classList.add('errored');
+                            pagesError.classList.add('active');
+                        }
+                    }
                 let saveButton = document.querySelector('.save-button');
                 saveButton.replaceWith(saveButton.cloneNode(true));
                 saveButton = document.querySelector('.save-button');
                 saveButton.addEventListener('click', () => {
-                    let titleInput = document.querySelector('#title');
-                    let authorInput = document.querySelector('#author');
-                    let pagesInput = document.querySelector('#pages');
-                    if(titleInput.value === '' || authorInput.value === '' || pagesInput.value === '') {
+                    if(!titleInput.validity.valid || !authorInput.validity.valid || !pagesInput.validity.valid) {
                         alert('Please complete book information before submitting!');
                         return;
                     }
